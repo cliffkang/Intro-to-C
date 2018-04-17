@@ -20,6 +20,22 @@ char *string_dup(char *src)
     }
     *dup_str = '\0';
     return dup_str - length;
+
+    /*
+        char *str;
+        char *p;
+        int len = string_length(src);
+
+        str = malloc(len + 1);
+        p = str;
+
+        while(*src) {
+            *p++ = *src++;
+        }
+
+        *p = '\0';
+        return p;
+    */
 }
 
 /*
@@ -36,8 +52,18 @@ void *mem_copy(void *dest, const void *src, int n)
     for (int i = 0; i < n; i++) {
         dest_new[i] = src_new[i];
     }
-    dest_new[n] = '\0';
+    dest_new[n] = '\0'; // not needed?
     return dest_new;
+    /*
+        char *csrc = (char *) src;
+        char *cdest = (char *) dest;
+
+        for (int i = 0; i < n; i++) {
+            cdest[i] = csrc[i];
+        }
+
+        return cdest;
+    */
 }
 
 #ifndef TESTING
