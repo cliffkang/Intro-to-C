@@ -9,7 +9,12 @@
 */
 int sorted_order(int a, int b)
 {
-
+    // if (a - b > 0) {
+    //     swap(&a, &b);
+    //     return 1;
+    // }
+    // return 0;
+    return a - b;
 }
 
 /*
@@ -18,7 +23,12 @@ int sorted_order(int a, int b)
 */
 int reverse_order(int a, int b)
 {
-
+    // if (b - a > 0) {
+    //     swap(&a, &b);
+    //     return 1;
+    // }
+    // return 0;
+    return b - a;
 }
 
 /*
@@ -29,7 +39,29 @@ int reverse_order(int a, int b)
 */
 int *bubble_sort(int *numbers, int n, compare_cb cmp)
 {
-
+    // int swapped = 1;
+    // int count = 1;
+    // while (swapped >= 1) {
+    //     swapped = 0;
+    //     for (int i = 0; i < n - count; i++) {
+    //         swapped += cmp(numbers[i], numbers[i + 1]);
+    //     }
+    //     count++;
+    // }
+    // return numbers;
+    int swapped = 1;
+    int count = 1;
+    while (swapped != 0) {
+        swapped = 0;
+        for (int i = 0; i < n - count; i++) {
+            if (cmp(numbers[i], numbers[i + 1]) > 0) {
+                swap(&numbers[i], &numbers[i + 1]);
+                swapped = 1;
+            }
+        }
+        count++;
+    }
+    return numbers;
 }
 
 #ifndef TESTING
